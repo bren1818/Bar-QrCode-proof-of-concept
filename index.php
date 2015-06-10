@@ -13,8 +13,6 @@
 			var codeType = 'code128';
 			
 			function genImage(){
-				
-				
 				$('#code').attr('height', size);
 				$('#code').attr('width', width);
 				if( codeType != 'qrcode'){
@@ -24,8 +22,7 @@
 				}
 			}
 		
-
-			$('#bc').keydown(function() {
+			$('#bc').on("change input",function(e) {
 				genImage();
 			});
 
@@ -38,9 +35,6 @@
 			  slide: function( event, ui ) {
 				$( "#size" ).html( ui.value );
 				size = ui.value;
-				
-				
-				
 				$('#code').attr('height', ui.value);
 			  }
 			});
@@ -58,9 +52,9 @@
 				if( codeType == 'qrcode'){
 					$('#code').attr('height', ui.value);
 				}
-				
 			  }
 			});
+			
 			$( "#codeType" ).change(function () {
 	  
 				$( "#codeType option:selected" ).each(function() {
@@ -73,12 +67,8 @@
 					$('.height').hide();
 					size = width;
 				}
-				
-				
 				genImage();
 			});
-			
-			
 			
 			genImage();
 		});

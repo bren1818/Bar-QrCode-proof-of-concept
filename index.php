@@ -15,10 +15,12 @@
 			function genImage(){
 				$('#code').attr('height', size);
 				$('#code').attr('width', width);
-				if( codeType != 'qrcode'){
-					$('#code').attr("src", 'getBarcode.php?text=' + $('#bc').val() + '&size=' + size + '&orientation=horizontal&codetype=' + codeType);
-				}else{
+				if( codeType == 'qrcode'){
 					$('#code').attr("src", 'getQRcode.php?text=' + $('#bc').val() + '&size=' + size + '&orientation=horizontal&codetype=' + codeType);
+				}else if( codeType == "TCPDF417"){
+					$('#code').attr("src", '/getTCPDF.php?text=' + $('#bc').val() + '&size=' + size + '&orientation=horizontal&codetype=' + codeType);
+				}else{
+					$('#code').attr("src", 'getBarcode.php?text=' + $('#bc').val() + '&size=' + size + '&orientation=horizontal&codetype=' + codeType);	
 				}
 			}
 		
@@ -92,6 +94,7 @@
 		<option value="code25">code25</option>
 		<option value="codabar">codabar</option>
 		<option value="qrcode">qrcode</option>
+		<option value="TCPDF417">TCPDF417</option>
 	</select>
 	
 	<hr />
